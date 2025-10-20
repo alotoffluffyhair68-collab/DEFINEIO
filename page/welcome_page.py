@@ -9,8 +9,8 @@ st.image("images/DEFINEIO.png")
 st.markdown('''
 ## Welcome to DEFINE-IO
 
-#Dear all, 
+# Dear all, 
 
-#Thank you very much for attending the DEFINE-IO consensus meeting, please take a seat, and we are due to start shortly. 
+# Thank you very much for attending the DEFINE-IO consensus meeting, please take a seat, and we are due to start shortly. 
             ''')
 st.divider()
