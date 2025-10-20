@@ -8,8 +8,8 @@ sumdf = None
 countdf = None
 
 #Set up every page
-st.logo("images\\UNITE LOGO.avif", size="large")
-st.image("images\\DEFINEIO.png")
+st.logo("images/UNITE LOGO.avif", size="large")
+st.image("images/DEFINEIO.png")
 
 # Welcome page content
 st.markdown("# Round 3 Results")
