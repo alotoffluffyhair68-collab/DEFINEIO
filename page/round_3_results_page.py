@@ -21,7 +21,7 @@ if uploaded_file is not None:
    sumdf=pd.read_excel(uploaded_file, header=0, sheet_name=1, index_col=0)
    countdf=pd.read_excel(uploaded_file, header=0, sheet_name=2, index_col=0)
 else:
-    st.warning("you need to upload a csv or excel file.")
+    st.warning("You need to upload a csv or excel file.")
 
 
 #Display data for the uploaded file
