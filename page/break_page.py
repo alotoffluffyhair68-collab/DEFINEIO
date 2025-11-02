@@ -3,8 +3,16 @@ import time
 import base64
 
 #Set up every page
-st.logo("images/UNITE LOGO.avif", size="large")
+st.logo("images/UNITE.jpg", size="large")
 st.image("images/DEFINEIO.png")
+st.html("""
+    <style>
+        .stMainBlockContainer {
+            max-width:60rem;
+        }
+    </style>
+    """
+)
 
 
 # Welcome page content
@@ -18,7 +26,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown('''<h1 class="title">Break Time </h1>''', unsafe_allow_html=True)
+st.markdown('''# Break Time''')
 st.image("images/coffee.jpg")
 
 def autoplay_audio(file_path: str):
