@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import altair as alt
 
 rawdf = None
 sumdf = None
@@ -31,7 +32,7 @@ if uploaded_file is not None:
    #read xls or xlsx
    rawdf=pd.read_excel(uploaded_file, header=0)
    sumdf=pd.read_excel(uploaded_file, header=0, sheet_name=1, index_col=0)
-   count_df=pd.read_excel(uploaded_file, header=0, sheet_name='Counts of Consensus Types', index_col=0)
+   count_df=pd.read_excel(uploaded_file, header=0, sheet_name='Counts of Consensus Types')
    transposed_df = pd.read_excel(uploaded_file, header=0, sheet_name='Transposed')
 else:
     st.warning("You need to upload a csv or excel file.")
@@ -43,10 +44,19 @@ tab1, tab2 = st.tabs(["Consensus Outcomes", "Top Statements"])
 #Tab 1: Consensus Outcomes
 tab1.subheader("Consensus Outcomes")
 if count_df is not None:
-    tab1.write("Total: 112 Statements")
-    tab1.bar_chart(data=count_df[["High Priority & Consensus","High Priority & No Consensus","Medium Priority/Uncertain & Consensus",
-                                "Medium Priority/Uncertain & No Consensus","Low Priority & Consensus","Low Priority & No Consensus"]],
-                                  stack=False, x_label="Outcomes", y_label="Count")
+    count_subset = count_df.drop(["Consensus",	"No Consensus"], axis='columns')
+    df_melt2 = count_subset.melt(var_name='Outcome', value_name='Count')
+    # Create Altair chart
+    chart = (
+        alt.Chart(df_melt2)
+        .mark_bar()
+        .encode(
+            x=alt.X('Outcome:N', axis=alt.Axis(labels=False)),
+            y='Count:Q',
+            color=alt.Color('Outcome:N', legend=alt.Legend(labelFontSize=14, titleFontSize=20, labelLimit=1000))
+        )
+    )
+    tab1.altair_chart(chart, use_container_width=True)
 
 
 

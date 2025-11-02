@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import altair as alt
 
 #Set up every page
 st.logo("images/UNITE.jpg", size="large")
@@ -32,7 +33,7 @@ if uploaded_file is not None:
    #read xls or xlsx into multiple dataframes
     transposed_df = pd.read_excel(uploaded_file, header=0, sheet_name='Transposed')
     demographics_df = pd.read_excel(uploaded_file, header=0, sheet_name='Demographics')
-    count_df=pd.read_excel(uploaded_file, header=0, sheet_name='Counts of Consensus Types', index_col=0)
+    count_df=pd.read_excel(uploaded_file, header=0, sheet_name='Counts of Consensus Types')
     pie_df=pd.read_excel(uploaded_file, header=0, sheet_name='Pie Charting')
 
 else:
@@ -56,10 +57,22 @@ if demographics_df is not None:
     tab1.plotly_chart(pie, use_container_width=True)
 
     #Areas of Practice
-    tab1.subheader("Areas of Practice")
-    tab1.bar_chart(data=pie_df[["Thermal Ablation",	"Image-guided biopsy", "Image-guided drainage",	"Palliative interventions",
-                               "Trans-arterial therapies","Non-thermal ablation", "Vertebral augmentation", "Complex biliary or urology"]],
-                                  stack=False, x_label="Areas of Practice", y_label="Count")
+    pie_subset = pie_df.drop(["Experience",	"Experience Count", "Target Organ",	"Target Organ Count"], axis='columns').head(1)
+    df_melt = pie_subset.melt(var_name='Area of Practice', value_name='Count')
+    # Create Altair chart
+    chart = (
+        alt.Chart(df_melt)
+        .mark_bar()
+        .encode(
+            x=alt.X('Area of Practice:N', axis=alt.Axis(labels=False)),
+            y='Count:Q',
+            color=alt.Color('Area of Practice:N', legend=alt.Legend(labelFontSize=14, titleFontSize=20))
+        )
+        .properties(title='Areas of Practice')
+        .configure_title(fontSize=28)
+    )
+    tab1.altair_chart(chart, use_container_width=True)
+
     
     #Target Organ
     tab1.subheader("Target Organs Regularly Treated")
@@ -70,9 +83,19 @@ if demographics_df is not None:
 tab2.subheader("Consensus Outcomes")
 if count_df is not None:
     tab2.write("Total: 112 Statements")
-    tab2.bar_chart(data=count_df[["High Priority & Consensus","High Priority & No Consensus","Medium Priority/Uncertain & Consensus",
-                                "Medium Priority/Uncertain & No Consensus","Low Priority & Consensus","Low Priority & No Consensus"]],
-                                  stack=False, x_label="Outcomes", y_label="Count")
+    count_subset = count_df.drop(["Consensus",	"No Consensus"], axis='columns')
+    df_melt2 = count_subset.melt(var_name='Outcome', value_name='Count')
+    # Create Altair chart
+    chart = (
+        alt.Chart(df_melt2)
+        .mark_bar()
+        .encode(
+            x=alt.X('Outcome:N', axis=alt.Axis(labels=False)),
+            y='Count:Q',
+            color=alt.Color('Outcome:N', legend=alt.Legend(labelFontSize=14, titleFontSize=20, labelLimit=1000))
+        )
+    )
+    tab2.altair_chart(chart, use_container_width=True)
 
 #Tab 3: Statements that have reached consensus
 if transposed_df is not None:
