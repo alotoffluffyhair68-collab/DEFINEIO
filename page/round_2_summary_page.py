@@ -117,7 +117,6 @@ if transposed_df is not None:
       tab4.markdown(value)
       tab4.write("")
 
-
 #Tab 5: Statements that are excluded
 tab5.subheader("Excluded Statements")
 if transposed_df is not None:
@@ -129,5 +128,3 @@ if transposed_df is not None:
     for value in df_excluded_dropped['Statement']:
       tab5.markdown(value)
       tab5.write("")
-
-    

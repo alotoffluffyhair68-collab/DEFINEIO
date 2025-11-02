@@ -57,7 +57,7 @@ table_1.index.name = "**Time**"
 st.table(table_1, border=True)
 st.divider()
 st.markdown('''
-            ### What We Do Today:
+            ### What We Will Do Today:
             ''')
 table_2 = pd.DataFrame(
         {
@@ -73,10 +73,3 @@ table_2 = pd.DataFrame(
 )
 table_2.index.name = "**Phase**"
 st.table(table_2, border=True)
-st.markdown('''
-            <div style='font-size:22px; line-height:1.6;'>
-              <br>
-            
-            **Thank you for your commitment to shaping the future of IO research!**
-            </div>
-            ''', unsafe_allow_html=True)

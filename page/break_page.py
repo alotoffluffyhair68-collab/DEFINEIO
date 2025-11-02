@@ -26,7 +26,10 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown('''# Break Time''')
+st.markdown('''
+            # DEFINE-IO Priority Setting Workshop
+            ## Break Time
+            ''')
 st.image("images/coffee.jpg")
 
 def autoplay_audio(file_path: str):
