@@ -88,10 +88,20 @@ if transposed_df is not None:
    df_dropped['Cleaned'] = df_dropped['Statement'].str.replace(r'^\d+\.\s*Statement\s*\d+:', '', regex=True).str.strip()
    df_dropped['Cleaned2'] = df_dropped['Cleaned'].str.replace('(1-9 numeric rating)', '', regex=False).str.strip()
    df_dropped['ranked'] = [f"**Rank {i+1}:** {text}" for i, text in enumerate(df_dropped['Cleaned2'])]
-   tab2.write("Statements that have reached consensus are listed below in rank order (based on median score and inter-percentile range).")
+   tab2.markdown('''
+                 <div style='font-size:22px; line-height:1.6;'>
+                 Statements that have reached consensus are listed below in rank order (based on median score and inter-percentile range).
+                 </div>
+                  ''', unsafe_allow_html=True)
+   tab2.write("")
    tab2.write("")
    for value in df_dropped['ranked']:
-      tab2.markdown(value)
+      tab2.markdown(f'''
+                     <div style='font-size:22px; line-height:1.6;'>
+                    
+                     {value}
+                     </div>
+                     ''', unsafe_allow_html=True)
       tab2.write("")
 
    

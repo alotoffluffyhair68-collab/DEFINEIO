@@ -137,7 +137,12 @@ if transposed_df is not None:
     df_nocon_dropped['Statement'] = df_nocon_dropped['Statement'].str.replace(r'^\d+\.\s*Statement\s*\d+:', '', regex=True).str.strip()
     df_nocon_dropped['Statement'] = df_nocon_dropped['Statement'].str.replace('(1-9 numeric rating)', '', regex=False).str.strip()
     for value in df_nocon_dropped['Statement']:
-      tab4.markdown(value)
+      tab4.markdown(f'''
+                     <div style='font-size:22px; line-height:1.6;'>
+                    
+                     {value}
+                     </div>
+                     ''', unsafe_allow_html=True)
       tab4.write("")
 
 #Tab 5: Statements that are excluded
@@ -149,5 +154,10 @@ if transposed_df is not None:
     df_excluded_dropped['Statement'] = df_excluded_dropped['Statement'].str.replace(r'^\d+\.\s*Statement\s*\d+:', '', regex=True).str.strip()
     df_excluded_dropped['Statement'] = df_excluded_dropped['Statement'].str.replace('(1-9 numeric rating)', '', regex=False).str.strip()
     for value in df_excluded_dropped['Statement']:
-      tab5.markdown(value)
+      tab5.markdown(f'''
+                     <div style='font-size:22px; line-height:1.6;'>
+                    
+                     {value}
+                     </div>
+                     ''', unsafe_allow_html=True)
       tab5.write("")
