@@ -36,3 +36,24 @@ st.markdown('''
             **The DEFINE-IO Study Team**
             </div> 
             ''', unsafe_allow_html=True)
+col1, col2, col3, col4, col5, col6, col7, col8, col9, col10 = st.columns(10)
+with col1:
+    st.image("images/VinsonChan.jpg", caption="Vinson Wai-Shun Chan")
+with col2:
+    st.image("images/HelenNg.jpg", caption="Helen Hoi-Lam Ng")
+with col3:
+    st.image("images/ScottGriffiths.jpeg", caption="Scott Griffiths")
+with col4:
+    st.image("images/BlairGraham.jpg", caption="Blair Graham")
+with col5:
+    st.image("images/DeeviaKotecha.avif", caption="Deevia Kotecha")
+with col6:
+    st.image("images/HanifIsmail.jpg", caption="Hanif Ismail")
+with col7:
+    st.image("images/PaulJenkins.png", caption="Paul Jenkins")
+with col8:
+    st.image("images/JimZhong.avif", caption="Jim Zhong")
+with col9:
+    st.image("images/RaghuL.avif", caption="Raghuram Lakshminarayan")
+with col10:
+    st.image("images/TzeMinWah.jpg", caption="Tze Min Wah")

@@ -123,7 +123,7 @@ if transposed_df is not None:
     df_medium_dropped = medium_priority_statements.drop(columns_to_drop, axis='columns')
     df_medium_dropped['Statement'] = df_medium_dropped['Statement'].str.replace(r'^\d+\.\s*Statement\s*\d+:', '', regex=True).str.strip()
     df_medium_dropped['Statement'] = df_medium_dropped['Statement'].str.replace('(1-9 numeric rating)', '', regex=False).str.strip()
-    tab3.dataframe(df_high_dropped, hide_index=True)
+    tab3.dataframe(df_medium_dropped, hide_index=True)
    #for value in df_medium_dropped['Statement']:
     #  tab3.markdown(value)
     # tab3.write("")
