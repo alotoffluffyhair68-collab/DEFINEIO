@@ -69,7 +69,7 @@ with col4:
 with col5:
     st.image("images/DeeviaKotecha.avif", caption="Deevia Kotecha")
 with col6:
-    st.image("images/HanifIsmail.jpg", caption="Hanif Ismail")
+    st.image("images/HanifIsmail.jpeg", caption="Hanif Ismail")
 with col7:
     st.image("images/PaulJenkins.png", caption="Paul Jenkins")
 with col8:

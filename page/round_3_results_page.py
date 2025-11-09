@@ -83,7 +83,7 @@ if count_df is not None:
 tab2.subheader("Top 25 Statements with Consensus")
 if transposed_df is not None:
    columns_to_drop = ['0.15 Quartile', '0.85 Quartile', 'IPRcp', 'AI', 'IPRAS', 1, 2, 3, 4, 5, 6, 7, 8, 9, 'Sum','No. outside range (AGREE, UNCERTAIN)', 'No. outside range (DISAGREE)', 'Classical Consensus', 'Outcome']
-   df_sorted = transposed_df.query("Consensus == 'CONSENSUS'").sort_values(by=['Median', 'IPR'], ascending=[False, True]).head(25).reset_index(drop=True)
+   df_sorted = transposed_df.query("Consensus == 'CONSENSUS'").sort_values(by=['Median', 'IPR', 'Mean'], ascending=[False, True, False]).head(25).reset_index(drop=True)
    df_dropped = df_sorted.drop(columns_to_drop, axis='columns')
    df_dropped['Cleaned'] = df_dropped['Statement'].str.replace(r'^\d+\.\s*Statement\s*\d+:', '', regex=True).str.strip()
    df_dropped['Cleaned2'] = df_dropped['Cleaned'].str.replace('(1-9 numeric rating)', '', regex=False).str.strip()

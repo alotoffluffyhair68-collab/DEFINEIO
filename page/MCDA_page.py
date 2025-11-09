@@ -19,7 +19,7 @@ st.markdown('''
             # DEFINE-IO Priority Setting Workshop
             ## Phase 2: Multi-Criteria Decision Analysis (MCDA)
             ''')
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Assessing Deliverability", "Scoring the Priorities", "Scoring QR", "Weighting the Criteria", "Weighting QR"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Assessing Deliverability", "Scoring the Priorities", "Scoring QR", "Weighting the Criteria", "Swing QR", "Weighting QR"])
 
 # Tab 1: Assessing Deliverability
 tab1.markdown(''' ### Purpose: Beyond Importance—Assessing Deliverability''')
@@ -167,9 +167,13 @@ tab4.markdown('''
             <div style='font-size:22px; line-height:1.6;'>
             <ol>
                 <li>
-              
+                
               **Establish Baseline:** Imagine a research topic performing at the worst possible level (Score 1) on all three criteria.</li>
-                <li>**Identify Primary Criterion:** If you could only "swing" ONE criterion from its worst level (1) to its best level (5), which change would provide the **MOST significant improvement** to the overall research portfolio?
+            > A study to validate a new, experimental 20-Tesla MRI scanner (costing £30 million per unit) that requires a novel, unstable explosive liquid hydrogen coolant (shipped weekly from Antarctica) to detect a 0.1% change in hippocampal blood flow when a person dreams about the colour blue.
+                
+              <li>
+              
+              **Identify Primary Criterion:** If you could only "swing" ONE criterion from its worst level (1) to its best level (5), which change would provide the **MOST significant improvement** to the overall research portfolio?
                     <ul>
                         <li>*Group vote will determine the Primary Criterion (Score 100)*.</li>
                     </ul>
@@ -185,3 +189,62 @@ tab4.markdown('''
             **Output:** A set of weights (summing to 1.0) reflecting the collective judgment of the panel. These weights will be applied to the scores to generate the final, strategic ranking.  
             </div>
             ''', unsafe_allow_html=True)
+
+#Tab 5:
+tab5.markdown('''### Please scan the QR code below to begin the survey''')
+# Display centered image
+image_path = "images/SWING1QR.jpeg"
+with open(image_path, "rb") as img_file:
+    img_base64 = base64.b64encode(img_file.read()).decode()
+tab5.markdown(
+    f"""
+    <style>
+    .centered-image {{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 120px 0;
+    }}
+    .centered-image img {{
+        transform: scale(1.8);  /*  scales the image up by 80% */
+        width: auto !important; /* override Streamlit’s auto-scaling */
+        height: auto !important;
+        max-width: none !important;
+    }}
+    </style>
+
+    <div class="centered-image">
+        <img src="data:image/jpeg;base64,{img_base64}" alt="image">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+#Tab 6:
+tab6.markdown('''### Please scan the QR code below to begin the survey''')
+image_path = "images/SWING2QR.jpeg"
+with open(image_path, "rb") as img_file:
+    img_base64 = base64.b64encode(img_file.read()).decode()
+tab6.markdown(
+    f"""
+    <style>
+    .centered-image {{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 120px 0;
+    }}
+    .centered-image img {{
+        transform: scale(1.8);  /*  scales the image up by 80% */
+        width: auto !important; /* override Streamlit’s auto-scaling */
+        height: auto !important;
+        max-width: none !important;
+    }}
+    </style>
+
+    <div class="centered-image">
+        <img src="data:image/jpeg;base64,{img_base64}" alt="image">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
