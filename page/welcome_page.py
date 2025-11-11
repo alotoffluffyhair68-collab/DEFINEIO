@@ -6,7 +6,7 @@ st.image("images/DEFINEIO.png")
 st.html("""
     <style>
         .stMainBlockContainer {
-            max-width:60rem;
+            max-width:70rem;
         }
     </style>
     """
